@@ -1,0 +1,60 @@
+<h1>Historial Sensor</h1>
+
+<!--<h2>{{alerta}}</h2>-->
+<!--<div *ngIf="alerta === 'alerta' ">-->
+<div *ngIf="alerta === 'alerta'">
+  <p-messages  severity="error" [hideTransitionOptions]="'2000ms'" [showTransitionOptions]="'1000ms'">
+    <ng-template pTemplate >
+      <div class="p-ml-2">Alerta, Alguien entró a tu hogar</div>
+     <!-- <button [hidden]="!mostrarBotonApagar()" (click)="apagar()">Apagar Alarma</button>-->
+
+
+    </ng-template>
+  </p-messages>
+
+  <div >
+
+    <small> ¿Desea apagar la alarma?</small>
+    <p-inputSwitch [(ngModel)]="checked" (onChange)="apagar()" ></p-inputSwitch>
+  </div>
+</div>
+
+<p-table [value]="logFiltrado()"
+         [paginator]="true"
+         [rows]="FILAS"
+         >
+  <ng-template pTemplate="caption" >
+    Historiales de Alertas
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Sensor</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+       </tr>
+     </ng-template>
+
+  <ng-template pTemplate="body" let-historial>
+    <tr>
+      <td>{{historial.sensor}}</td>
+      <td>{{historial.fecha}}</td>
+      <td>{{historial.hora}}</td>
+
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage" >
+    <tr>
+      <td>
+        Sin registros
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>
+
+<form class="example-form">
+
+</form>
+
+
